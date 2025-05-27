@@ -1,6 +1,27 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## A sample digital marketplace Using Next.js
+
+ **A digital marketplace web app where users can browse, search, and purchase**
+
+- Show the product list with infinite scroll
+- User should be able filter. 
+- Support Keyword Search
+- Support tests
+
+Desktop view
+
+### Following Design System
+ we use the idea of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) as a part of building a web page.
+
+ Basic Terminology
+* Atom - A single and the most basic entity in our system. This can be anything, be it a single image or a simple piece of text indicating a headline/subheadline.
+
+* Molecules - Group of atoms forms a molecule. A combination of an image and a headline can form a card, which is indeed a molecu****le.
+`Atom + Atom = Molecules`
+
+* Row - Group of molecules forms a row. A couple of card groups arranged in some order can form a row. This can be the highest entity level in our system where multiple rows form a web page.
+`Molecule + Molecule = Organisms`.
 
 First, run the development server:
 
@@ -29,12 +50,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployed on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+link : https://connect-alpha-nine.vercel.app/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# connect
-# connect
-# connect
-# connect
+### Available Scripts
+
+```bash
+npm run dev
+npm run build
+npm run test
+
+```
+
+
+

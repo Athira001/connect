@@ -20,6 +20,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Store - CONNECT",
   description: "Buy, Sell, and Download FREE 3D Garment, Fabric, Trim, Avatar and Scene assets.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({
