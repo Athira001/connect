@@ -1,0 +1,21 @@
+.footerFluid {
+    background-color: #000000;
+    color: #96969F;
+    display: flex;
+    align-items: center;
+    padding: 8px 24px;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #20DF71, #42CDDD, #0962DD);
+    border-image-slice: 1;
+    width: 100%;
+}
+
+.footerFluid ul {
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.footerFluid ul li:last-child {
+    margin-left: auto;
+}

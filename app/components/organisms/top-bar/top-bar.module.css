@@ -1,0 +1,31 @@
+.topHeaderContainerFluid {
+    background-color: #000000;
+    padding: 60px 24px;
+}
+
+.topHeaderContainer{
+    max-width: 1024px;
+    margin: auto;
+}
+
+.topHeaderContainer h2 {
+    max-width: 500px;
+}
+
+.formWrapper {
+    display: flex;
+}
+
+.submitBtn {
+    background: #1A1A1F;
+
+    padding: 16px;
+    cursor: pointer;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .topHeaderContainerFluid {
+        padding: 40px 24px;
+    }
+}

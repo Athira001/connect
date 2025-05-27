@@ -1,0 +1,27 @@
+.searchInputWrapper{
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.searchInput {
+    height: 56px;
+    border: 2px solid #1A1A1F;
+    padding: 12px;
+    color: #E7E7E8;
+    font-size: 12px;
+    font-weight: bold;
+    padding-right: 12px;
+    background-color: #1A1A1F;
+    width: 100%;
+
+}
+
+.clearButton {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 16px;
+    top: 32%;
+    cursor: pointer;
+}

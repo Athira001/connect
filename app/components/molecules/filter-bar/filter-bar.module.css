@@ -1,0 +1,30 @@
+.filterWrapper {
+    padding:16px 24px;
+    background-color: #232323;
+    margin-top: 16px;
+    border: 1px solid #1A1A1F;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.options {
+    margin-right: 40px;
+}
+
+.resetButton {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+    .options {
+        margin-right: 12px;
+        font-size: 12px;
+    }
+}

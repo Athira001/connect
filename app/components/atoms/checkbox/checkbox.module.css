@@ -1,0 +1,20 @@
+.checkboxWrapper {
+    margin-right: 40px;
+    font-size: 16px;
+}
+
+.checkbox {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .checkboxWrapper {
+        margin-right: 16px;
+        font-size: 12px;
+    }
+
+    .checkbox {
+        font-size: 12px;
+        margin-right: 4px;
+    }
+}
