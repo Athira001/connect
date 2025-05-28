@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
-import { useSelector } from 'react-redux';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useSelector } from "react-redux";
+import { useEffect, useState, useRef, useCallback } from "react";
 
-import { RootState } from '@/app/store/store';
-import FilterBar from '../../molecules/filter-bar';
-import ProductSummaryCard from '../../molecules/product-summary-card';
+import { RootState } from "@/app/store/store";
+import FilterBar from "../../molecules/filter-bar";
+import ProductSummaryCard from "../../molecules/product-summary-card";
+import SortDropdown from "../../molecules/sort-dropdown";
+import { sortProducts } from "./product-utils";
 
-import styles from './prosduct-list.module.css';
+import styles from "./prosduct-list.module.css";
 
 const ITEMS_PER_LOAD = 8;
 
@@ -17,7 +19,7 @@ interface Product {
   creator: string;
   imagePath: string;
   pricingOption: number;
-  price?: number;
+  price: number;
 }
 
 interface PricingOption {
@@ -26,31 +28,35 @@ interface PricingOption {
 }
 
 const pricingOptions: PricingOption[] = [
-  { label: 'Paid', value: 0 },
-  { label: 'Free', value: 1 },
-  { label: 'View Only', value: 2 },
+  { label: "Paid", value: 0 },
+  { label: "Free", value: 1 },
+  { label: "View Only", value: 2 },
 ];
 
 const ProductList = () => {
-  const searchTerm = useSelector((state: RootState) => state.search.term.toLowerCase());
+  const searchTerm = useSelector((state: RootState) =>
+    state.search.term.toLowerCase()
+  );
 
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<number[]>([]);
+  const [sortOption, setSortOption] = useState<string>("default");
   const [loading, setLoading] = useState<boolean>(true);
   const [isFetchingMore, setIsFetchingMore] = useState<boolean>(false);
   const observerRef = useRef<HTMLDivElement | null>(null);
 
-  // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('https://closet-recruiting-api.azurewebsites.net/api/data');
+        const res = await fetch(
+          "https://closet-recruiting-api.azurewebsites.net/api/data"
+        );
         const data: Product[] = await res.json();
         setAllProducts(data);
         setVisibleProducts(data.slice(0, ITEMS_PER_LOAD));
       } catch (error) {
-        console.error('Error fetching product data:', error);
+        console.error("Error fetching product data:", error);
       } finally {
         setLoading(false);
       }
@@ -60,19 +66,18 @@ const ProductList = () => {
   }, []);
 
   const getFilteredProducts = (): Product[] => {
-    const filtered = selectedFilters.length
+    let filtered = selectedFilters.length
       ? allProducts.filter((p) => selectedFilters.includes(p.pricingOption))
       : allProducts;
 
     if (searchTerm) {
-      return filtered.filter(
+      filtered = filtered.filter(
         (p) =>
           p.title.toLowerCase().includes(searchTerm) ||
           p.creator.toLowerCase().includes(searchTerm)
       );
     }
-
-    return filtered;
+    return sortProducts(filtered, sortOption);
   };
 
   const loadMore = useCallback(() => {
@@ -87,12 +92,12 @@ const ProductList = () => {
       });
       setIsFetchingMore(false);
     }, 400);
-  }, [isFetchingMore, allProducts, selectedFilters, searchTerm]);
+  }, [isFetchingMore, allProducts, selectedFilters, searchTerm, sortOption]);
 
   useEffect(() => {
     const filtered = getFilteredProducts();
     setVisibleProducts(filtered.slice(0, ITEMS_PER_LOAD));
-  }, [selectedFilters, allProducts, searchTerm]);
+  }, [selectedFilters, allProducts, searchTerm, sortOption]);
 
   useEffect(() => {
     if (!observerRef.current) return;
@@ -103,7 +108,7 @@ const ProductList = () => {
           loadMore();
         }
       },
-      { rootMargin: '200px' }
+      { rootMargin: "200px" }
     );
 
     observer.observe(observerRef.current);
@@ -138,6 +143,8 @@ const ProductList = () => {
         toggleFilter={toggleFilter}
         resetFilters={resetFilters}
       />
+
+      <SortDropdown value={sortOption} onChange={setSortOption} />
 
       <div className={styles.productListWrapper}>
         {visibleProducts.map((product) => (

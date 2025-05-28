@@ -1,0 +1,17 @@
+.sortWrapper {
+    display: flex;
+    align-self: end;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    background: #1A1A1F;
+    align-items: center;
+}
+
+.dropdown {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid;
+    margin-left: 12px;
+    padding: 8px 0;
+    font-size: 14px;
+}

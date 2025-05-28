@@ -11,7 +11,7 @@ interface Product {
   creator: string;
   imagePath: string;
   pricingOption: number;
-  price?: number;
+  price: number;
 }
 
 interface ProductSummaryCardProps {
@@ -24,10 +24,10 @@ const ProductSummaryCard: React.FC<ProductSummaryCardProps> = ({ product }) => {
   const fallbackImage =
     'https://closetfrontrecruiting.blob.core.windows.net/images/thumbnail_3.jpeg';
 
-  const getPricingLabel = (option: number): string => {
+  const getPricingLabel = (option: number, price:number ): string => {
     switch (option) {
       case 0:
-        return 'Paid';
+        return `$${price}`;
       case 1:
         return 'Free';
       case 2:
@@ -59,7 +59,7 @@ const ProductSummaryCard: React.FC<ProductSummaryCardProps> = ({ product }) => {
           <div className={styles.title}>{product.title}</div>
         </div>
         <div className={styles.price}>
-          {getPricingLabel(product.pricingOption)}
+          {getPricingLabel(product?.pricingOption, product.price)}
         </div>
       </div>
     </div>
