@@ -5,11 +5,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
  **A digital marketplace web app where users can browse, search, and purchase**
 
 - Show the product list with infinite scroll
-- User should be able filter. 
+- User should be able to filter.
+- Support sorting
 - Support Keyword Search
 - Support tests
 
-Desktop view
 
 ### Following Design System
  we use the idea of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) as a part of building a web page.
